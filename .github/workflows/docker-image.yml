@@ -10,19 +10,16 @@ on:
   workflow_dispatch:
   
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+    - name: Login to Docker Hub
+      run: docker login --username "${{ secrets.DOCKER_USERNAME }}" --password "${{ secrets.DOCKER_PASSWORD }}"
+      
+    - name: Build the Docker Image
       run: docker build . --file Dockerfile --tag stockexchange_test:$(date +%s)
       
-    - name: Push to Docker Hub
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: anushka20211064/stockxchangetool
+    - name: Push the Docker Image
+      run: docker push anushka20211064/stockxchangetool
