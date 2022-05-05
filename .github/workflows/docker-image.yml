@@ -20,6 +20,9 @@ jobs:
       
     - name: Build the Docker Image
       run: docker build . --file Dockerfile --tag stockexchange_test/v1
+	  
+    - name: Tag the Docker Image
+      run: docker tag stockexchange_test/v1 anushka20211064/stockxchangetool
       
     - name: Push the Docker Image
       run: docker push anushka20211064/stockxchangetool
