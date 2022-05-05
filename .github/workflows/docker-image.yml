@@ -19,7 +19,7 @@ jobs:
       run: docker login --username "${{ secrets.DOCKER_USERNAME }}" --password "${{ secrets.DOCKER_PASSWORD }}"
       
     - name: Build the Docker Image
-      run: docker build . --file Dockerfile --tag stockexchange_test:$(date +%s)
+      run: docker build . --file Dockerfile --tag stockexchange_test/v1
       
     - name: Push the Docker Image
       run: docker push anushka20211064/stockxchangetool
