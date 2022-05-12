@@ -1,6 +1,6 @@
 FROM node
 
-# Create working directory app
+# Create a working directory app
 WORKDIR /usr/src/app
 
 # Install app dependencies
